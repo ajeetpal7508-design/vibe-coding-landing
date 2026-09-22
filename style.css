@@ -64,8 +64,13 @@ h1, h2, h3, p { margin-top: 0; }
 h1 { max-width: 650px; margin-bottom: 28px; font-size: clamp(4rem, 8vw, 7.2rem); font-weight: 600; line-height: .88; letter-spacing: -.08em; }
 .accent-text { color: var(--lime); }
 .hero-description { max-width: 410px; margin-bottom: 36px; color: var(--muted); font-size: 1.05rem; line-height: 1.65; }
-.primary-button { display: inline-flex; align-items: center; gap: 26px; padding: 15px 17px 15px 21px; color: var(--background); background: var(--lime); font-size: .88rem; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+.hero-role { margin: -14px 0 18px; color: var(--text); font: 500 .8rem "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+.primary-button, .secondary-button { display: inline-flex; align-items: center; gap: 26px; padding: 15px 17px 15px 21px; font-size: .88rem; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+.primary-button { color: var(--background); background: var(--lime); }
 .primary-button:hover, .primary-button:focus-visible { background: #e0ff91; transform: translateY(-3px); }
+.secondary-button { gap: 12px; padding-right: 20px; padding-left: 20px; border: 1px solid var(--line); color: var(--text); }
+.secondary-button:hover, .secondary-button:focus-visible { border-color: var(--lime); color: var(--lime); transform: translateY(-3px); }
 .button-arrow { font-size: 1.1rem; }
 
 .hero-visual { position: relative; padding: 24px 0 36px; }
@@ -97,6 +102,12 @@ h2 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; line-he
 h3 { margin-bottom: 12px; font-size: 1.35rem; font-weight: 500; letter-spacing: -.04em; }
 .feature-card p { max-width: 260px; margin-bottom: 0; color: var(--muted); font-size: .9rem; line-height: 1.65; }
 
+.skills-section { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: end; padding: 0 0 120px; }
+.skills-section .eyebrow { margin-bottom: 12px; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-badge { padding: 10px 14px; border: 1px solid var(--line); color: var(--text); font: 400 .72rem "DM Mono", monospace; letter-spacing: .04em; transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease; }
+.skill-badge:hover { border-color: var(--lime); color: var(--background); background: var(--lime); transform: translateY(-3px); }
+
 .projects { padding: 0 0 120px; }
 .section-note { max-width: 250px; margin: 0 0 5px; color: var(--muted); font-size: .9rem; line-height: 1.6; }
 .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 28px; }
@@ -116,6 +127,16 @@ h3 { margin-bottom: 12px; font-size: 1.35rem; font-weight: 500; letter-spacing: 
 .project-link:hover span, .project-link:focus-visible span { transform: translateX(5px); }
 .footer-links { display: flex; gap: 24px; margin-left: auto; margin-right: 38px; }
 
+.contact-section { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; padding: 82px 0 110px; border-top: 1px solid var(--line); }
+.contact-section h2 { margin-bottom: 0; }
+.contact-links { border-top: 1px solid var(--line); }
+.contact-links a { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--text); text-decoration: none; transition: color .2s ease, padding .2s ease; }
+.contact-links a:hover, .contact-links a:focus-visible { padding-left: 8px; color: var(--lime); }
+.contact-links span { color: var(--muted); font: 400 .68rem "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.contact-links strong { font-size: .94rem; font-weight: 500; }
+.contact-links strong i { display: none; font-style: normal; }
+.contact-links > a > span:last-child { color: var(--lime); font: 400 1rem "DM Mono", monospace; }
+
 @keyframes blink { 50% { opacity: 0; } }
 @media (max-width: 780px) {
   .page-shell { width: min(calc(100% - 32px), var(--max-width)); }
@@ -133,19 +154,27 @@ h3 { margin-bottom: 12px; font-size: 1.35rem; font-weight: 500; letter-spacing: 
   .section-heading .eyebrow { margin-bottom: 20px; }
   .feature-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: 230px; }
+  .skills-section { display: block; padding-bottom: 92px; }
+  .skill-list { margin-top: 28px; }
   .projects { padding-bottom: 92px; }
   .section-note { margin-top: 24px; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card { min-height: 300px; }
+  .contact-section { display: block; padding: 70px 0 84px; }
+  .contact-links { margin-top: 42px; }
   .site-footer { flex-wrap: wrap; gap: 16px; padding: 20px 0; }
   .footer-links { order: 3; width: 100%; margin: 0; }
 }
 @media (max-width: 430px) {
   .header-status { display: none; }
   .hero { padding-top: 62px; }
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .primary-button, .secondary-button { justify-content: space-between; }
   .code-content { padding: 25px 12px 30px; font-size: .66rem; }
   .code-line i { width: 20px; margin-right: 12px; }
   .indent { padding-left: 20px; }
   .site-footer { font-size: .58rem; }
   .footer-links { gap: 16px; }
+  .contact-links a { grid-template-columns: 70px 1fr auto; gap: 10px; }
+  .contact-links strong { font-size: .78rem; overflow-wrap: anywhere; }
 }
