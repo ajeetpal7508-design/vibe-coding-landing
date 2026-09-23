@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajeetpal7508-design.github.io/vibe-coding-landing/sitemap.xml
